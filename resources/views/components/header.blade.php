@@ -35,9 +35,7 @@
     <div class="mx-auto space-y-3 max-w-7xl py-6 sm:px-6 lg:px-8">
         <!-- Your content -->
         <a href="/deliveryorder-app/public/create" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add new document</a>
-        <div class="mx-auto max-w py-6 rounded-md bg-white-800 flex text-lg rounded-md border-solid border-2 px-2">
-        Something
-        </div>
+        {{ $slot }}
     </div>
   </main>
 </div>
