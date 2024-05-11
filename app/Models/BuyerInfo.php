@@ -9,6 +9,8 @@ class BuyerInfo extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function deliveryorderdoc()
     {
         return $this->hasMany(DeliveryOrderDoc::class);

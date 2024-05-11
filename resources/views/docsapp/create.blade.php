@@ -132,7 +132,8 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                             Number</x-input-label>
                         <div class="mt-2">
                             <x-text-input :disabled="true" type="text" name="DONumber" id="DONumber"
-                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></x-text-input>
+                                class="block w-full rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value="{{ $docnum }}"></x-text-input>
                         </div>
                     </div>
 
@@ -140,7 +141,7 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                         <label for="PONumber" class="block text-sm font-medium leading-6 text-gray-900">PO
                             Number</label>
                         <div class="mt-2">
-                            <input type="text" name="PONumber" id="PONumber"
+                            <input type="text" name="PONumber" id="PONumber" maxlength=6
                                 class="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                     </div>
@@ -161,6 +162,9 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                         </div>
                     </div>
 
+                    @livewireStyles
+                    <livewire:dynamic-inputs />
+<!--
                     <div class="sm:col-span-2">
                         <label for="items" class="block text-sm font-medium leading-6 text-gray-900">Items</label>
                         <div class="mt-2">
@@ -174,14 +178,16 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                     </div>
 
                     <div class="col-span-2">
-                        <label for="street-address"
+                        <label for="itemqty"
                             class="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
                         <div class="mt-2">
-                            <input type="text" name="street-address" id="street-address"
+                            <input type="text" name="itemqty" id="itemqty"
                                 class="block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                     </div>
-
+-->
+                    @livewireScripts
+<!--
                     <div class="col-span-1">
                         <div class="mt-2 pt-6">
                             <button type="submit"
@@ -199,6 +205,7 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                             </button>
                         </div>
                     </div>
+-->
                 </div>
             </div>
 

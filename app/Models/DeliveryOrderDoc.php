@@ -9,6 +9,8 @@ class DeliveryOrderDoc extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function deliveryorderdocdetails()
     {
         return $this->hasMany(deliveryorderdocdetail::class);
@@ -16,11 +18,11 @@ class DeliveryOrderDoc extends Model
 
     public function buyerinfo()
     {
-        return $this->belongsTo(buyerinfo::class);
+        return $this->belongsTo(buyerinfo::class, "buyer_info_id", "id");
     }
 
     public function sellerinfo()
     {
-        return $this->belongsTo(SellerInfo::class);
+        return $this->belongsTo(SellerInfo::class, "seller_info_id", "id");
     }
 }

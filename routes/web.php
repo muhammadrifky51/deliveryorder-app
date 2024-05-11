@@ -1,27 +1,35 @@
 <?php
 
+use App\Models\BuyerInfo;
 use App\Models\DeliveryOrderDoc;
-use App\Models\DeliveryOrderDocDetail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
 //Index
 Route::get('/', function () {
-    //$items=DeliveryOrderDocDetail::all();
+    $items = DeliveryOrderDoc::all();
 
     //dd($items);
 
-    return view('docsapp.index');
+    //dd($items->find(1));
+
+    //dd($cuba->find(1)->deliveryorderdoc->value('DONumber'));
+
+    return view('docsapp.index', [
+        'listdoc' => $items
+    ]);
 });
 
 //Create
-Route::get('/create', function () {
-    $dodocs = DeliveryOrderDoc::all()->count() + 1;
+Route::get('/{id}/create', function () {
+    $dodocs = DeliveryOrderDoc::all()->last()->id + 1;
     $digit = 6 - Str::length("{$dodocs}");
     $zeros = Str::repeat("0", $digit);
     $donum = "{$zeros}{$dodocs}";
 
     //dd($donum);
 
-    return view('docsapp.create');
+    return view('docsapp.create', [
+        'docnum' => $donum
+    ]);
 });
