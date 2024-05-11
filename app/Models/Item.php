@@ -9,8 +9,10 @@ class Item extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function deliveryorderdocdetails()
     {
-        return $this -> belongsToMany(DeliveryOrderDocDetail::class);
+        return $this->belongsToMany(DeliveryOrderDocDetail::class);
     }
 }

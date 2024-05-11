@@ -9,6 +9,8 @@ class DeliveryOrderDocDetail extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function items()
     {
         return $this->belongsToMany(item::class);
