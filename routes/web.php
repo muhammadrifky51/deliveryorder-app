@@ -19,7 +19,7 @@ Route::get('/create', function () {
     $zeros = Str::repeat("0", $digit);
     $donum = "{$zeros}{$dodocs}";
 
-    dd($donum);
+    //dd($donum);
 
-    //return view('docsapp.create');
+    return view('docsapp.create');
 });
