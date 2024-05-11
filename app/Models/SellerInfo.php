@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BuyerInfo extends Model
+class SellerInfo extends Model
 {
     use HasFactory;
 
     public function deliveryorderdoc()
     {
-        return $this->hasMany(DeliveryOrderDoc::class);
+        return $this->hasMany(deliveryorderdoc::class);
     }
 }

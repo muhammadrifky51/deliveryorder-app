@@ -16,6 +16,6 @@ class DeliveryOrderDocDetail extends Model
 
     public function deliveryorderdoc()
     {
-        return $this->belongsTo(DeliveryOrderDoc::class);
+        return $this->belongsTo(deliveryorderdoc::class);
     }
 }

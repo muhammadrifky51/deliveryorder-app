@@ -18,4 +18,9 @@ class DeliveryOrderDoc extends Model
     {
         return $this->belongsTo(buyerinfo::class);
     }
+
+    public function sellerinfo()
+    {
+        return $this->belongsTo(SellerInfo::class);
+    }
 }
