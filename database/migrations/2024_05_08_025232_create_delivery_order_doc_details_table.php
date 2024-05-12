@@ -13,16 +13,9 @@ return new class extends Migration
     {
         Schema::create('delivery_order_doc_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(App\Models\DeliveryOrderDoc::class);
-            $table->foreignIdFor(\App\Models\Item::class);
+            $table->foreignIdFor(App\Models\DeliveryOrderDoc::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\Item::class)->constrained()->cascadeOnDelete();
             $table->integer('ItemQty');
-            $table->timestamps();
-        });
-
-        Schema::create('delivery_order_doc_detail_items', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(App\Models\DeliveryOrderDoc::class);
-            $table->foreignIdFor(\App\Models\Item::class);
             $table->timestamps();
         });
     }

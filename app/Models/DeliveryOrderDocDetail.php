@@ -9,7 +9,7 @@ class DeliveryOrderDocDetail extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ["delivery_order_doc_id", "item_id", "ItemQty"];
 
     public function items()
     {
@@ -18,6 +18,6 @@ class DeliveryOrderDocDetail extends Model
 
     public function deliveryorderdoc()
     {
-        return $this->belongsTo(deliveryorderdoc::class);
+        return $this->belongsTo(deliveryorderdoc::class, "delivery_order_doc_id", "id");
     }
 }

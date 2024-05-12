@@ -9,6 +9,8 @@ class SellerInfo extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["Name", "Address1", "Address2", "PhoneNumber"];
+
     public function deliveryorderdoc()
     {
         return $this->hasMany(deliveryorderdoc::class);

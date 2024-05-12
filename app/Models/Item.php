@@ -9,10 +9,15 @@ class Item extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ["UnitPrices", "ItemDesc"];
 
     public function deliveryorderdocdetails()
     {
         return $this->belongsToMany(DeliveryOrderDocDetail::class);
+    }
+
+    public function deliveryorderdocs()
+    {
+        return $this->belongsToMany(DeliveryOrderDoc::class, "delivery_order_doc_details");
     }
 }

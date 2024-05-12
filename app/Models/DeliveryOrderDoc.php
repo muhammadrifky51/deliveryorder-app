@@ -9,7 +9,7 @@ class DeliveryOrderDoc extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ["buyer_info_id", "seller_info_id", "DONumber", "PONumber", "DeliveryDate", "DocNotes"];
 
     public function deliveryorderdocdetails()
     {
@@ -24,5 +24,10 @@ class DeliveryOrderDoc extends Model
     public function sellerinfo()
     {
         return $this->belongsTo(SellerInfo::class, "seller_info_id", "id");
+    }
+
+    public function items()
+    {
+        return $this->belongsToMany(item::class, "delivery_order_doc_details");
     }
 }

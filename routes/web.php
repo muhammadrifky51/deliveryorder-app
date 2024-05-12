@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 //Create
-Route::get('/{id}/create', function () {
+Route::get('/create', function () {
     $dodocs = DeliveryOrderDoc::all()->last()->id + 1;
     $digit = 6 - Str::length("{$dodocs}");
     $zeros = Str::repeat("0", $digit);

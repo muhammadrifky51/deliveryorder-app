@@ -19,9 +19,9 @@ class DeliveryOrderDocDetailFactory extends Factory
     public function definition(): array
     {
         return [
-            'Delivery_Order_Doc_id'=>DeliveryOrderDoc::factory(),
-            'Item_id'=>Item::factory(),
-            'ItemQty'=>fake()->randomNumber(2)
+            'Delivery_Order_Doc_id' => fake()->randomElement(DeliveryOrderDoc::all('id'))->id,
+            'Item_id' => fake()->randomElement(Item::all('id'))->id,
+            'ItemQty' => fake()->randomNumber(2)
         ];
     }
 }

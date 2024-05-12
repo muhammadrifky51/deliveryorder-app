@@ -9,7 +9,7 @@ class BuyerInfo extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ["Name", "Address1", "Address2", "PhoneNumber"];
 
     public function deliveryorderdoc()
     {
