@@ -38,8 +38,11 @@ class docsappController extends Controller
         $errmsg = [];
         $items = [];
         $itemqty = [];
+        $itemimg = [];
 
         $buyername = request('buyername');
+
+        $validation = FacadesValidator::make(request()->all(), ['buyernumber' => ["regex:/^((\(021\)|))([0-9]){6,10}$|^$/"], 'imgfile1' => "image|mimes:jpg,png,jpeg|max:2048", 'imgfile2' => "image|mimes:jpg,png,jpeg|max:2048", 'imgfile3' => "image|mimes:jpg,png,jpeg|max:2048"]);
         if ($buyername == null) {
             $errmsg['buyername'] = "Buyer name cannot be blank";
         } else {
@@ -74,6 +77,15 @@ class docsappController extends Controller
             } else {
                 $itemqty[$items1] = request('itemqty1');
             }
+            if (request('imgfile1') == null) {
+                $errmsg['imgfile1'] = "Please upload the image";
+            } else {
+                if ($validation->fails()) {
+                    $errmsg['imgfile1'] = "Wrong image format/file is too large (max 2mb)";
+                }
+                $path = request()->file('imgfile1')->store('public\images');
+                $itemimg[$items1] = $path;
+            }
         }
         if (request('items2') == "Select Item") {
             $items2 = null;
@@ -84,6 +96,15 @@ class docsappController extends Controller
                 $errmsg['itemqty2'] = "Please input the quantity";
             } else {
                 $itemqty[$items2] = request('itemqty2');
+            }
+            if (request('imgfile2') == null) {
+                $errmsg['imgfile2'] = "Please upload the image";
+            } else {
+                if ($validation->fails()) {
+                    $errmsg['imgfile2'] = "Wrong image format/file is too large (max 2mb)";
+                }
+                $path = request()->file('imgfile2')->store('public\images');
+                $itemimg[$items2] = $path;
             }
         }
         if (request('items3') == "Select Item") {
@@ -96,16 +117,26 @@ class docsappController extends Controller
             } else {
                 $itemqty[$items3] = request('itemqty3');
             }
+            if (request('imgfile3') == null) {
+                $errmsg['imgfile3'] = "Please upload the image";
+            } else {
+                if ($validation->fails()) {
+                    $errmsg['imgfile3'] = "Wrong image format/file is too large (max 2mb)";
+                }
+                $path = request()->file('imgfile3')->store('public\images');
+                $itemimg[$items3] = $path;
+            }
         }
         if (count($items) === 0) {
             $errmsg['items'] = "Please input at least 1 item";
         } elseif (count($items) > count(array_unique($items))) {
             $errmsg['items'] = "Items cannot be duplicate";
         }
-        $validation = FacadesValidator::make(request()->all(), ['buyernumber' => ["regex:/^((\(021\)|))([0-9]){6,10}$|^$/"]]);
+
+        //$validation = FacadesValidator::make(request()->all(), ['buyernumber' => ["regex:/^((\(021\)|))([0-9]){6,10}$|^$/"]]);
 
         if (request('buyernumber') == null) {
-            "I won't do nothing here, just beginner stuff who don't know negation on php";
+            "I'm doing nothing here, just beginner stuff who don't know negation on php";
         } else {
             if ($validation->fails()) {
                 $errmsg['buyernumber'] = "Wrong phone number format";
@@ -141,7 +172,8 @@ class docsappController extends Controller
             DeliveryOrderDocDetail::create([
                 'delivery_order_doc_id' => $docsid,
                 'item_id' => Item::where('ItemDesc', '=', $item)->first()->id,
-                'ItemQty' => $itemqty[$item]
+                'ItemQty' => $itemqty[$item],
+                'Image' => $itemimg[$item]
             ]);
         }
 

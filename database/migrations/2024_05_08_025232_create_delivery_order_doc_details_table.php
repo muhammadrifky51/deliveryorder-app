@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignIdFor(App\Models\DeliveryOrderDoc::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\Item::class)->constrained()->cascadeOnDelete();
             $table->integer('ItemQty');
+            $table->string('Image');
             $table->timestamps();
         });
     }

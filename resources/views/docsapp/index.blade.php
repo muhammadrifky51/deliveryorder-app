@@ -6,7 +6,7 @@
             new document
         </a>
         @foreach($listdoc as $lst)
-        <x-doclist>
+        <x-doclist tujuan="\create">
             <div>
                 <h1 >Delivery Order Number: <a class="font-bold">{{ $lst['DONumber'] }}</a></h1>
                 <p class="text-sm">Sent to <a class="font-bold">{{ $lst->buyerinfo->Name }}</a> on <a class="font-bold">{{ $lst['DeliveryDate'] }}</a></p>

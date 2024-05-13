@@ -21,7 +21,8 @@ class DeliveryOrderDocDetailFactory extends Factory
         return [
             'Delivery_Order_Doc_id' => fake()->randomElement(DeliveryOrderDoc::all('id'))->id,
             'Item_id' => fake()->randomElement(Item::all('id'))->id,
-            'ItemQty' => fake()->randomNumber(2)
+            'ItemQty' => fake()->randomNumber(2),
+            'Image' => fake()->imageUrl(category: "animals", word: "cats")
         ];
     }
 }

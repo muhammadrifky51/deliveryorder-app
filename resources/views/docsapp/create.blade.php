@@ -13,7 +13,7 @@
 
 <x-layout :hiddenbtn="true">
     <x-slot name="headertitle">Delivery Order Form</x-slot>
-    <form method="POST" action=".">
+    <form method="POST" action="." enctype="multipart/form-data">
         @csrf
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
@@ -205,21 +205,28 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                         </div>
                     </div>
 
-                    <div class="col-span-2">
+                    <div class="col-span-1">
                         <label for="itemqty"
                             class="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
                         <div class="mt-2">
                             <input type="text" name="itemqty1" id="itemqty1"
-                                class="block w-1/2 rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                class="block w-3/5 rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                         @error('itemqty1')
                             <p class="text-red-500 italic text-sm">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <div class="col-span-2"></div>
+                    <div class="col-span-2">
+                        <label for="imgfile1"
+                            class="block text-sm font-medium leading-6 text-transparent">a</label>
+                        <input type="file" id="imgfile1" name="imgfile1" accept="image/png, image/jpeg, image/jpg" class="w-full py-1.5 px-1 text-gray-900 sm:text-sm sm:leading-6">
+                        @error('imgfile1')
+                            <p class="text-red-500 italic text-sm">{{ $message }}</p>
+                        @enderror                    
+                    </div>
                     
-                                        <div class="sm:col-span-2">
+                    <div class="sm:col-span-2">
                         <label for="items" class="block text-sm font-medium leading-6 text-gray-900">Items</label>
                         <div class="mt-2">
                             <select id="items2" name="items2"
@@ -232,19 +239,26 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                         </div>
                     </div>
 
-                    <div class="col-span-2">
+                    <div class="col-span-1">
                         <label for="itemqty"
                             class="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
                         <div class="mt-2">
                             <input type="text" name="itemqty2" id="itemqty2"
-                                class="block w-1/2 rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                class="block w-3/5 rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                         @error('itemqty2')
                             <p class="text-red-500 italic text-sm">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <div class="col-span-2"></div>
+                    <div class="col-span-2">
+                        <label for="imgfile2"
+                            class="block text-sm font-medium leading-6 text-transparent">a</label>                        
+                        <input type="file" id="imgfile2" name="imgfile2" accept="image/png, image/jpeg, image/jpg" class="w-full py-1.5 px-1 text-gray-900 sm:text-sm sm:leading-6"/>
+                        @error('imgfile2')
+                            <p class="text-red-500 italic text-sm">{{ $message }}</p>
+                        @enderror                    
+                    </div>
 
                     <div class="sm:col-span-2">
                         <label for="items" class="block text-sm font-medium leading-6 text-gray-900">Items</label>
@@ -259,19 +273,26 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                         </div>
                     </div>
 
-                    <div class="col-span-2">
+                    <div class="col-span-1">
                         <label for="itemqty"
                             class="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
                         <div class="mt-2">
                             <input type="text" name="itemqty3" id="itemqty3"
-                                class="block w-1/2 rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                class="block w-3/5 rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                         @error('itemqty3')
                             <p class="text-red-500 italic text-sm">{{ $message }}</p>
                         @enderror                    
                     </div>
 
-                    <div class="col-span-2"></div>
+                    <div class="col-span-2">
+                        <label for="imgfile3"
+                            class="block text-sm font-medium leading-6 text-transparent">a</label>                        
+                        <input type="file" id="imgfile3" name="imgfile3" accept="image/png, image/jpeg, image/jpg" class="w-full py-1.5 px-1 text-gray-900 sm:text-sm sm:leading-6"/>
+                        @error('imgfile3')
+                            <p class="text-red-500 italic text-sm">{{ $message }}</p>
+                        @enderror                    
+                    </div>
                     
                     @if ($errors->first('items')!=null)
                         <div class="col-span-full">
