@@ -128,7 +128,7 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                         <x-input-label for="buyernumber" class="block text-sm font-medium leading-6 text-gray-900">Buyer
                             Number</x-input-label>
                         <div class="mt-2">
-                            <input name="buyernumber" id="buyernumber" type="tel" pattern="^[0-9-+\s()]{6,16}$"
+                            <input name="buyernumber" id="buyernumber" type="tel" pattern="^((\(021\)|))([0-9]){6,12}$"
                                 class="block w-full rounded-md border-0 py-1.5 pl-1 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 placeholder="(021)123456">
                         </div>
@@ -162,7 +162,7 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                         <label for="PONumber" class="block text-sm font-medium leading-6 text-gray-900">PO
                             Number</label>
                         <div class="mt-2">
-                            <input type="text" name="PONumber" id="PONumber" maxlength=6
+                            <input type="text" name="PONumber" id="PONumber" maxlength=6, pattern="^[0-9]{6}$"
                                 class="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                         @error('PONumber')
@@ -210,7 +210,7 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                             class="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
                         <div class="mt-2">
                             <input type="text" name="itemqty1" id="itemqty1"
-                                class="block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                class="block w-1/2 rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                         @error('itemqty1')
                             <p class="text-red-500 italic text-sm">{{ $message }}</p>
@@ -237,7 +237,7 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                             class="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
                         <div class="mt-2">
                             <input type="text" name="itemqty2" id="itemqty2"
-                                class="block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                class="block w-1/2 rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                         @error('itemqty2')
                             <p class="text-red-500 italic text-sm">{{ $message }}</p>
@@ -264,7 +264,7 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                             class="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
                         <div class="mt-2">
                             <input type="text" name="itemqty3" id="itemqty3"
-                                class="block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                class="block w-1/2 rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                         @error('itemqty3')
                             <p class="text-red-500 italic text-sm">{{ $message }}</p>
