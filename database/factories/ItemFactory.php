@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use DOMElement;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +18,8 @@ class ItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'ItemDesc' => fake()->words(random_int(1,3), true),
-            'UnitPrices' => fake()->randomfloat(1,1,100)*1000
+            'ItemDesc' => fake()->words(random_int(1, 3), true),
+            'UnitPrices' => fake()->randomfloat(1, 1, 100) * 1000
         ];
     }
 }

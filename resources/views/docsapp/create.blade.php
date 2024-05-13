@@ -13,7 +13,8 @@
 
 <x-layout :hiddenbtn="true">
     <x-slot name="headertitle">Delivery Order Form</x-slot>
-    <form>
+    <form method="POST" action=".">
+        @csrf
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
                 <h2 class="text-base font-semibold leading-7 text-gray-900">Seller</h2>
@@ -78,17 +79,28 @@ Jalan Ampera Raya &#13;&#10; Gedung B
 
             <div class="border-b border-gray-900/10 pb-12">
                 <h2 class="text-base font-semibold leading-7 text-gray-900">Buyer</h2>
-                <p class="mt-1 text-sm leading-6 text-gray-600">Buyer information.</p>
+                <p class="mt-1 text-sm leading-6 text-gray-600">Buyer information. </p>
 
                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div class="sm:col-span-2">
                         <x-input-label for="buyername" class="block text-sm font-medium leading-6 text-gray-900">Buyer
                             Name</x-input-label>
                         <div class="mt-2">
+<!--
+                            <select name="buyername" id="buyername" class="block w-full flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 select-none items-center py-1.5 pl-1 text-gray-900 sm:text-sm placeholeder:text-gray-400"
+                                placeholder="Seller Name">
+                            <option> Item 1</option>
+                            <option> Item 2</option>
+                            <option> Item 3</option>
+                            </select>
+-->    
                             <x-text-input :disabled="false" name="buyername" id="buyername" type="text"
                                 class="block w-full flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 select-none items-center py-1.5 pl-1 text-gray-900 sm:text-sm placeholeder:text-gray-400"
-                                placeholder="Seller Name"></x-text-input>
+                                placeholder="Buyer Name"></x-text-input>
                         </div>
+                        @error('buyername')
+                            <p class="text-red-500 italic text-sm">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="col-span-full">
@@ -100,12 +112,15 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                                 class="block w-full rounded-md border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 <x-text-input :disabled="false" id="buyeraddress" name="buyeraddress" type="text"
                                     class="block w-full flex border-0 bg-transparent select-none items-center py-1.5 pl-1 text-gray-500 sm:text-sm placeholder:text-gray-400"
-                                    placeholder="Buyer Address 1"></x-text-input>
+                                    placeholder="Buyer Address 1" value=""></x-text-input>
                                 <x-text-input :disabled="false" id="buyeraddress2" name="buyeraddress2" type="text"
                                     class="block w-full flex border-0 bg-transparent select-none items-center py-1.5 pl-1 text-gray-500 sm:text-sm placeholder:text-gray-400"
                                     placeholder="Buyer Address 2"></x-text-input>
                             </div>
                         </div>
+                        @error('buyeraddress')
+                            <p class="text-red-500 italic text-sm">{{ $message }}</p>
+                        @enderror                        
                         <p class="mt-3 text-sm leading-6 text-gray-600"></p>
                     </div>
 
@@ -117,6 +132,9 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                                 class="block w-full rounded-md border-0 py-1.5 pl-1 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 placeholder="(021)123456">
                         </div>
+                        @error('buyernumber')
+                            <p class="text-red-500 italic text-sm">{{ $message }}</p>
+                        @enderror                                    
                     </div>
                 </div>
 
@@ -134,6 +152,9 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                             <x-text-input :disabled="true" type="text" name="DONumber" id="DONumber"
                                 class="block w-full rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 value="{{ $docnum }}"></x-text-input>
+                            <x-text-input :disabled="false" type="hidden" name="DONumber" id="DONumber"
+                                class="block w-full rounded-md border-0 py-1.5 px-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value="{{ $docnum }}"></x-text-input>
                         </div>
                     </div>
 
@@ -144,6 +165,9 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                             <input type="text" name="PONumber" id="PONumber" maxlength=6
                                 class="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
+                        @error('PONumber')
+                            <p class="text-red-500 italic text-sm">{{ $message }}</p>
+                        @enderror                        
                     </div>
 
                     <div class="sm:col-span-2">
@@ -152,6 +176,9 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                             <input type="text" name="datepicker" id="datepicker"
                                 class="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
+                        @error('datepicker')
+                            <p class="text-red-500 italic text-sm">{{ $message }}</p>
+                        @enderror                             
                     </div>
 
                     <div class="sm:col-span-full">
@@ -162,17 +189,18 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                         </div>
                     </div>
 
-                    @livewireStyles
-                    <livewire:dynamic-inputs />
-<!--
+                    <!--@-livewireStyles-->
+                    <!--<live wirex:dynamic-inputs />-->
+
                     <div class="sm:col-span-2">
                         <label for="items" class="block text-sm font-medium leading-6 text-gray-900">Items</label>
                         <div class="mt-2">
-                            <select id="items" name="items"
+                            <select id="items1" name="items1"
                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                <option>Item 1</option>
-                                <option>Item 2</option>
-                                <option>Item 3</option>
+                                <option>Select Item</option>
+                                @foreach(App\Models\Item::all(["ItemDesc"]) as $item)
+                                <option>{{ $item->ItemDesc }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -181,16 +209,82 @@ Jalan Ampera Raya &#13;&#10; Gedung B
                         <label for="itemqty"
                             class="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
                         <div class="mt-2">
-                            <input type="text" name="itemqty" id="itemqty"
+                            <input type="text" name="itemqty1" id="itemqty1"
                                 class="block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
+                        @error('itemqty1')
+                            <p class="text-red-500 italic text-sm">{{ $message }}</p>
+                        @enderror
                     </div>
--->
-                    @livewireScripts
+
+                    <div class="col-span-2"></div>
+                    
+                                        <div class="sm:col-span-2">
+                        <label for="items" class="block text-sm font-medium leading-6 text-gray-900">Items</label>
+                        <div class="mt-2">
+                            <select id="items2" name="items2"
+                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                <option>Select Item</option>
+                                @foreach(App\Models\Item::all(["ItemDesc"]) as $item)
+                                <option>{{ $item->ItemDesc }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-span-2">
+                        <label for="itemqty"
+                            class="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
+                        <div class="mt-2">
+                            <input type="text" name="itemqty2" id="itemqty2"
+                                class="block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                        @error('itemqty2')
+                            <p class="text-red-500 italic text-sm">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="col-span-2"></div>
+
+                    <div class="sm:col-span-2">
+                        <label for="items" class="block text-sm font-medium leading-6 text-gray-900">Items</label>
+                        <div class="mt-2">
+                            <select id="items3" name="items3"
+                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                <option>Select Item</option>
+                                @foreach(App\Models\Item::all(["ItemDesc"]) as $item)
+                                <option>{{ $item->ItemDesc }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-span-2">
+                        <label for="itemqty"
+                            class="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
+                        <div class="mt-2">
+                            <input type="text" name="itemqty3" id="itemqty3"
+                                class="block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                        @error('itemqty3')
+                            <p class="text-red-500 italic text-sm">{{ $message }}</p>
+                        @enderror                    
+                    </div>
+
+                    <div class="col-span-2"></div>
+                    
+                    @if ($errors->first('items')!=null)
+                        <div class="col-span-full">
+                            <p class="text-red-500 italic text-sm">{{ $errors->first('items') }}</p>
+                        </div>    
+                    @endif
+                    
+
+                    <!--@-livewireScripts-->
 <!--
                     <div class="col-span-1">
                         <div class="mt-2 pt-6">
-                            <button type="submit"
+                            <button type="button"
                                 class="rounded-md bg-red-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                                 Remove
                             </button>
@@ -199,18 +293,19 @@ Jalan Ampera Raya &#13;&#10; Gedung B
 
                     <div class="col-span-2">
                         <div class="mt-2">
-                            <button type="submit"
+                            <button type="button"
                                 class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                                 Add Item
                             </button>
                         </div>
                     </div>
--->
+                -->
+                    
                 </div>
             </div>
 
             <div class="mt-6 flex items-center justify-end gap-x-6">
-                <a href="/deliveryorder-app/public" type="button"
+                <a href="." type="button"
                     class="text-sm font-semibold leading-6 text-gray-900">Cancel</a>
                 <button type="submit"
                     class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>

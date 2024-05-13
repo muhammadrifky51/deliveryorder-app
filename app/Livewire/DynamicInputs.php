@@ -2,12 +2,12 @@
 
 namespace App\Livewire;
 
-use App\Models\DeliveryOrderDocDetail;
+use App\Models\TempItem;
 use Livewire\Component;
 
 class DynamicInputs extends Component
 {
-    public $docitems;
+    public $tempitems;
 
     public function render()
     {
@@ -16,11 +16,11 @@ class DynamicInputs extends Component
 
     public function mount()
     {
-        $this->docitems = DeliveryOrderDocDetail::all();
+        $this->tempitems = TempItem::all();
     }
 
     public function add()
     {
-        $this->docitems->push(new DeliveryOrderDocDetail());
+        $this->tempitems->push(new TempItem());
     }
 }
