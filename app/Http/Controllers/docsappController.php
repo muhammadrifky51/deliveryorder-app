@@ -42,7 +42,7 @@ class docsappController extends Controller
 
         $buyername = request('buyername');
 
-        $validation = FacadesValidator::make(request()->all(), ['buyernumber' => ["regex:/^((\(021\)|))([0-9]){6,10}$|^$/"], 'imgfile1' => "image|mimes:jpg,png,jpeg|max:2048", 'imgfile2' => "image|mimes:jpg,png,jpeg|max:2048", 'imgfile3' => "image|mimes:jpg,png,jpeg|max:2048"]);
+        $validation = FacadesValidator::make(request()->all(), ['buyernumber' => ["regex:/^((\(021\)|))([0-9]){6,10}$|^$/"]]);
         if ($buyername == null) {
             $errmsg['buyername'] = "Buyer name cannot be blank";
         } else {
@@ -80,9 +80,6 @@ class docsappController extends Controller
             if (request('imgfile1') == null) {
                 $errmsg['imgfile1'] = "Please upload the image";
             } else {
-                if ($validation->fails()) {
-                    $errmsg['imgfile1'] = "Wrong image format/file is too large (max 2mb)";
-                }
                 $path = request()->file('imgfile1')->store('public\images');
                 $itemimg[$items1] = $path;
             }
@@ -100,9 +97,6 @@ class docsappController extends Controller
             if (request('imgfile2') == null) {
                 $errmsg['imgfile2'] = "Please upload the image";
             } else {
-                if ($validation->fails()) {
-                    $errmsg['imgfile2'] = "Wrong image format/file is too large (max 2mb)";
-                }
                 $path = request()->file('imgfile2')->store('public\images');
                 $itemimg[$items2] = $path;
             }
@@ -120,9 +114,6 @@ class docsappController extends Controller
             if (request('imgfile3') == null) {
                 $errmsg['imgfile3'] = "Please upload the image";
             } else {
-                if ($validation->fails()) {
-                    $errmsg['imgfile3'] = "Wrong image format/file is too large (max 2mb)";
-                }
                 $path = request()->file('imgfile3')->store('public\images');
                 $itemimg[$items3] = $path;
             }

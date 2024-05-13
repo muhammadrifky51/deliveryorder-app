@@ -9,7 +9,7 @@ class DeliveryOrderDocDetail extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["delivery_order_doc_id", "item_id", "ItemQty"];
+    protected $fillable = ["delivery_order_doc_id", "item_id", "ItemQty", "Image"];
 
     public function items()
     {
