@@ -80,7 +80,7 @@ class docsappController extends Controller
             if (request('imgfile1') == null) {
                 $errmsg['imgfile1'] = "Please upload the image";
             } else {
-                $path = request()->file('imgfile1')->store('public\images');
+                $path = request()->file('imgfile1')->store('public/images');
                 $itemimg[$items1] = $path;
             }
         }
@@ -97,7 +97,7 @@ class docsappController extends Controller
             if (request('imgfile2') == null) {
                 $errmsg['imgfile2'] = "Please upload the image";
             } else {
-                $path = request()->file('imgfile2')->store('public\images');
+                $path = request()->file('imgfile2')->store('public/images');
                 $itemimg[$items2] = $path;
             }
         }
@@ -114,7 +114,7 @@ class docsappController extends Controller
             if (request('imgfile3') == null) {
                 $errmsg['imgfile3'] = "Please upload the image";
             } else {
-                $path = request()->file('imgfile3')->store('public\images');
+                $path = request()->file('imgfile3')->store('public/images');
                 $itemimg[$items3] = $path;
             }
         }
